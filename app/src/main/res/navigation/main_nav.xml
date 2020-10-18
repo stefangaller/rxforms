@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main_nav"
+            app:startDestination="@id/firstStepFragment">
+
+    <fragment
+            android:id="@+id/firstStepFragment"
+            android:name="at.stefangaller.rxforms.FirstStepFragment"
+            tools:layout="@layout/fragment_first_step"
+            android:label="FirstStepFragment">
+        <action
+                android:id="@+id/toSecondFragment"
+                app:destination="@id/secondStepFragment"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/secondStepFragment"
+            android:name="at.stefangaller.rxforms.SecondStepFragment"
+            android:label="SecondStepFragment">
+        <action
+                android:id="@+id/toSummary"
+                app:destination="@id/summaryFragment"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/summaryFragment"
+            android:name="at.stefangaller.rxforms.SummaryFragment"
+            android:label="SummaryFragment">
+        <action
+                android:id="@+id/restart"
+                app:popUpTo="@id/firstStepFragment"
+                app:popUpToInclusive="false"/>
+    </fragment>
+</navigation>

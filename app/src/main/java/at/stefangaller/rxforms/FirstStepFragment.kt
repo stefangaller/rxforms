@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.navGraphViewModels
 import com.jakewharton.rxbinding4.view.clicks
+import com.jakewharton.rxbinding4.widget.textChanges
 import kotlinx.android.synthetic.main.fragment_first_step.*
 
 class FirstStepFragment : NavigationFragment() {
@@ -19,7 +21,11 @@ class FirstStepFragment : NavigationFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.registerFirstFragmentClicks(button_next.clicks())
+        viewModel.registerFirstFragmentInput(button_next.clicks(), username.textChanges(), password.textChanges())
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {
+            error.text = it
+        })
 
     }
 }

@@ -21,8 +21,6 @@ class SecondStepFragment : NavigationFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.registerSecondFragmentClicks(button_next.clicks())
-
-
     }
 
 }
